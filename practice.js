@@ -27,7 +27,9 @@
   Then invoke the callback function, passing in the first element in the array as it's argument.
 */
 
-// Code Here 
+var first = (arr, callback) => {
+  return callback(arr[0]);
+}// Code Here 
 
 // Do not edit the code below.
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
@@ -48,6 +50,10 @@ first(names, function(firstName){
 */
 
 //Code Here
+function last (arr, callback){
+  return callback(arr[arr.length - 1]);
+}
+
 
 // Do not edit the code below.
 last(names, function(lastName){
@@ -66,6 +72,9 @@ last(names, function(lastName){
 */
 
 //Code Here
+function multiply(num1, num2, callback){
+  return callback(num1 * num2);
+}
 
 // Do not edit the code below.
 multiply(4, 3, function(answer){
@@ -96,7 +105,14 @@ contains(names, 'Colt', function(result){
 });
 // Do not edit the code above.
 
-
+function contains (array, name, callback){
+  if (array.includes(name)){
+    callback(true);
+  }
+  else {
+    callback(false);
+  }
+}
 
 ////////// PROBLEM 5 //////////
 
@@ -105,7 +121,10 @@ contains(names, 'Colt', function(result){
   Remove any duplicate values from the array, and invoke the callback with the modified array as an argument.
 */
 
-//Code Here
+function uniq (array, callback){
+  var set1 = new Set(array);
+  callback(Array.from(set1));
+}
 
 // Do not edit the code below.
 uniq(names, function(uniqArr){
@@ -122,7 +141,11 @@ uniq(names, function(uniqArr){
   For each name in the array, invoke the callback and pass in the name and the name's index as arguments.
 */
 
-//Code Here 
+function each (arr, callback){
+  arr.forEach(el => {
+    return callback(el, el.indexOf());
+  } )
+}
 
 // Do not edit the code below.
 each(names, function(item, indice){
@@ -140,7 +163,13 @@ each(names, function(item, indice){
 */
 
 // Code here
-
+function getUserById (arr, id, callback){
+  for (let i = 0; i < arr.length; i++){
+    if (arr[i].id === id){
+      callback(arr[i]);
+    }
+  }
+}
 // Do not edit the code below.
 var users = [
   {
